@@ -1,8 +1,12 @@
 package com.stefanini.service;
 
+import com.stefanini.dto.JogadorCadastroDTO;
+import com.stefanini.dto.JogadorVisualizacaoDTO;
 import com.stefanini.entity.Jogador;
 import com.stefanini.exceptions.RegraDeNegocioException;
+import com.stefanini.parser.JogadorParser;
 import com.stefanini.repository.JogadorRepository;
+import com.stefanini.utils.EncriptadorSenhaUtil;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -10,6 +14,7 @@ import javax.transaction.Transactional;
 import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class JogadorService {
@@ -19,28 +24,45 @@ public class JogadorService {
 
     @Transactional
     public void salvar(Jogador jogador) {
-        jogadorRepository.save(jogador);
+        jogador.setPassword(EncriptadorSenhaUtil
+                .encripta(jogador.getPassword()));
+        jogadorRepository.salvar(jogador);
     }
 
-    public Jogador pegarPorId(Long id) {
-        var jogador = jogadorRepository.findById(id);
+    public JogadorVisualizacaoDTO pegarPorId(Long id) {
+        var jogador = jogadorRepository.pegarPorId(id);
         if(Objects.isNull(jogador)) {
             throw new RegraDeNegocioException("Ocorreu um erro ao buscar o Jogador de id " + id, Response.Status.NOT_FOUND);
         }
-        return jogador;
+        return JogadorParser.entidadeParaVisualizacaoDTO(jogador);
     }
 
     @Transactional
     public void alterar(Jogador jogador) {
-        jogadorRepository.update(jogador);
+        jogador.setPassword(EncriptadorSenhaUtil
+                .encripta(jogador.getPassword()));
+        jogadorRepository.alterar(jogador);
     }
 
     @Transactional
     public void deletar(Long id) {
-        jogadorRepository.delete(id);
+        jogadorRepository.deletar(id);
     }
 
-    public List<Jogador> listarTodos() {
-        return jogadorRepository.listAll();
+    public List<JogadorVisualizacaoDTO> listarTodos() {
+        return jogadorRepository.listarTodos().stream()
+                .map(JogadorParser::entidadeParaVisualizacaoDTO)
+                .collect(Collectors.toList());
+    }
+
+    public void loginDoJogador(JogadorCadastroDTO jogador) {
+        Jogador jogadorEncontrado = jogadorRepository
+                .loginDoJogador(jogador.getNickname(), jogador.getPassword())
+                .getSingleResult();
+
+        if(Objects.isNull(jogadorEncontrado)) {
+            throw new RegraDeNegocioException("Nenhum jogador encontrado com esse usuário e senha",
+                    Response.Status.NOT_FOUND);
+        }
     }
 }
