@@ -3,18 +3,21 @@ package com.stefanini.dto;
 import com.stefanini.entity.Jogador;
 import com.stefanini.entity.Stefamon;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 public class JogadorVisualizacaoDTO {
     private Long id;
     private String nickname;
     private BigDecimal saldo;
+    List<Stefamon> stefamons;
+
+    public JogadorVisualizacaoDTO(Jogador jogador) {
+        this.id = jogador.getId();
+        this.nickname = jogador.getNickname();
+        this.saldo = jogador.getSaldo();
+        this.stefamons = jogador.getStefamons();
+    }
 
     public Long getId() {
         return id;
@@ -40,9 +43,11 @@ public class JogadorVisualizacaoDTO {
         this.saldo = saldo;
     }
 
-    public JogadorVisualizacaoDTO(Jogador jogador) {
-        this.id = jogador.getId();
-        this.nickname = jogador.getNickname();
-        this.saldo = jogador.getSaldo();
+    public List<Stefamon> getStefamons() {
+        return stefamons;
+    }
+
+    public void setStefamons(List<Stefamon> stefamons) {
+        this.stefamons = stefamons;
     }
 }

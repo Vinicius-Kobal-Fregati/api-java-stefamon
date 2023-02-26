@@ -1,5 +1,7 @@
 package com.stefanini.entity;
 
+import com.stefanini.dto.JogadorCadastroDTO;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -29,8 +31,6 @@ public class Jogador {
     private String password;
 
     @Column
-    @NotNull(message = "Saldo não pode ser nulo")
-    @NotEmpty(message = "Saldo não pode ser vazio")
     private BigDecimal saldo = BigDecimal.valueOf(5000.00);
 
 
@@ -41,6 +41,11 @@ public class Jogador {
     private List<Stefamon> stefamons = new ArrayList<>();
 
     public Jogador() {
+    }
+
+    public Jogador(JogadorCadastroDTO jogador) {
+        this.nickname = jogador.getNickname();
+        this.password = jogador.getPassword();
     }
 
     public Long getId() {

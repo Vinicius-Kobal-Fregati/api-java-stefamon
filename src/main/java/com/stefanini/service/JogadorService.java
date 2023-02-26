@@ -23,10 +23,12 @@ public class JogadorService {
     JogadorRepository repository;
 
     @Transactional
-    public void salvar(Jogador jogador) {
+    public void salvar(JogadorCadastroDTO jogador) {
+        Jogador jogadorCriado = JogadorParser
+                .cadastroDTOParaEntidade(jogador);
         jogador.setPassword(EncriptadorSenhaUtil
                 .encripta(jogador.getPassword()));
-        repository.salvar(jogador);
+        repository.salvar(jogadorCriado);
     }
 
     public JogadorVisualizacaoDTO pegarPorId(Long id) {

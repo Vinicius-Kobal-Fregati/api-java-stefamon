@@ -1,5 +1,6 @@
 package com.stefanini.resources;
 
+import com.stefanini.dto.JogadorCadastroDTO;
 import com.stefanini.entity.Jogador;
 import com.stefanini.service.JogadorService;
 
@@ -27,7 +28,7 @@ public class JogadorResource {
     }
 
     @POST
-    public Response salvar(@Valid Jogador jogador) {
+    public Response salvar(@Valid JogadorCadastroDTO jogador) {
         jogadorService.salvar(jogador);
         return Response.status(Response.Status.CREATED).build();
     }
@@ -35,13 +36,20 @@ public class JogadorResource {
     @POST
     public Response alterar(@Valid Jogador jogador) {
         jogadorService.alterar(jogador);
-        return Response.status(Response.Status.OK).build();
+        return Response.status(Response.Status.NO_CONTENT).build();
     }
 
     @POST
     @Path("/{id}")
     public Response deletar(@PathParam("id") Long id) {
         jogadorService.deletar(id);
+        return Response.status(Response.Status.NO_CONTENT).build();
+    }
+
+    @POST
+    @Path("/login")
+    public Response loginDoJogador(@Valid JogadorCadastroDTO jogador) {
+        jogadorService.loginDoJogador(jogador);
         return Response.status(Response.Status.NO_CONTENT).build();
     }
 

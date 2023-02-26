@@ -3,7 +3,6 @@ package com.stefanini.resources;
 import com.stefanini.service.StefamonService;
 
 import javax.inject.Inject;
-import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
