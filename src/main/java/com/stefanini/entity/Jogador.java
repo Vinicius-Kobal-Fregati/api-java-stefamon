@@ -1,6 +1,9 @@
 package com.stefanini.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,13 +18,20 @@ public class Jogador {
     private Long id;
 
     @Column(unique = true)
+    @NotNull(message = "Nickname não pode ser nulo")
+    @NotEmpty(message = "Nickname não pode ser vazio")
     private String nickname;
 
     @Column
+    @NotNull(message = "Senha não pode ser nulo")
+    @NotEmpty(message = "Senha não pode ser vazio")
+    @Size(min = 4, max = 10, message = "O tamanho da senha deve ser entre 4 e 10 caracteres")
     private String password;
 
     @Column
-    private BigDecimal saldo;
+    @NotNull(message = "Saldo não pode ser nulo")
+    @NotEmpty(message = "Saldo não pode ser vazio")
+    private BigDecimal saldo = BigDecimal.valueOf(5000.00);
 
 
     @ManyToMany
