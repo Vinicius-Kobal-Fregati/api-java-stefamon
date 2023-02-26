@@ -18,7 +18,7 @@ public class StefamonDTO {
     private String urlFoto;
 
     public StefamonDTO(Stefamon stefamon) {
-        this.id = stefamon.getId();
+        this.id = stefamon.getIdStefamon();
         this.nome = stefamon.getNome();
         this.vida = stefamon.getVida();
         this.ataque = stefamon.getAtaque();

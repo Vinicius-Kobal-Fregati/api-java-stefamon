@@ -13,4 +13,8 @@ public abstract class JogadorParser {
     public static Jogador cadastroDTOParaEntidade(JogadorCadastroDTO jogador) {
         return new Jogador(jogador);
     }
+
+    public static Jogador visualizacaoDTOParaEntidade(JogadorVisualizacaoDTO jogador) {
+        return new Jogador(jogador);
+    }
 }

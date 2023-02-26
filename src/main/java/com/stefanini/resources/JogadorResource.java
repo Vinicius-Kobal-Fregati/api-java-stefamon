@@ -1,5 +1,6 @@
 package com.stefanini.resources;
 
+import com.stefanini.dto.CompraStefamonDTO;
 import com.stefanini.dto.JogadorCadastroDTO;
 import com.stefanini.entity.Jogador;
 import com.stefanini.service.JogadorService;
@@ -50,6 +51,13 @@ public class JogadorResource {
     @Path("/login")
     public Response loginDoJogador(@Valid JogadorCadastroDTO jogador) {
         jogadorService.loginDoJogador(jogador);
+        return Response.status(Response.Status.NO_CONTENT).build();
+    }
+
+    @PUT
+    @Path("/compra")
+    public Response loginDoJogador(CompraStefamonDTO compra) {
+        jogadorService.compraStefamon(compra);
         return Response.status(Response.Status.NO_CONTENT).build();
     }
 

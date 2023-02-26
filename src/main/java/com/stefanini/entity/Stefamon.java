@@ -11,7 +11,7 @@ public class Stefamon {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idStefamon;
 
     @Column(nullable = false)
     private String nome;
@@ -40,7 +40,7 @@ public class Stefamon {
     public Stefamon() {}
 
     public Stefamon(StefamonDTO dto) {
-        this.id = dto.getId();
+        this.idStefamon = dto.getId();
         this.nome = dto.getNome();
         this.vida = dto.getVida();
         this.ataque = dto.getAtaque();
@@ -51,12 +51,12 @@ public class Stefamon {
         this.urlFoto = dto.getUrlFoto();
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdStefamon() {
+        return idStefamon;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdStefamon(Long idStefamon) {
+        this.idStefamon = idStefamon;
     }
 
     public String getNome() {

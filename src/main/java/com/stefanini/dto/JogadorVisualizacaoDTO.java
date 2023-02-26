@@ -13,7 +13,7 @@ public class JogadorVisualizacaoDTO {
     List<Stefamon> stefamons;
 
     public JogadorVisualizacaoDTO(Jogador jogador) {
-        this.id = jogador.getId();
+        this.id = jogador.getIdJogador();
         this.nickname = jogador.getNickname();
         this.saldo = jogador.getSaldo();
         this.stefamons = jogador.getStefamons();

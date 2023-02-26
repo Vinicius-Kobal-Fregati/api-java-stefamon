@@ -1,6 +1,7 @@
 package com.stefanini.entity;
 
 import com.stefanini.dto.JogadorCadastroDTO;
+import com.stefanini.dto.JogadorVisualizacaoDTO;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -17,7 +18,7 @@ public class Jogador {
     @Id
     @Column(name = "id_jogador")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idJogador;
 
     @Column(unique = true)
     @NotNull(message = "Nickname não pode ser nulo")
@@ -36,8 +37,8 @@ public class Jogador {
 
     @ManyToMany
     @JoinTable(name = "Jogador_Stefamon",
-            joinColumns = {@JoinColumn(name = "IdJogador")},
-            inverseJoinColumns = {@JoinColumn(name = "IdStefamon")})
+            joinColumns = {@JoinColumn(name = "idJogador")},
+            inverseJoinColumns = {@JoinColumn(name = "idStefamon")})
     private List<Stefamon> stefamons = new ArrayList<>();
 
     public Jogador() {
@@ -48,12 +49,19 @@ public class Jogador {
         this.password = jogador.getPassword();
     }
 
-    public Long getId() {
-        return id;
+    public Jogador(JogadorVisualizacaoDTO jogador) {
+        this.idJogador = jogador.getId();
+        this.nickname = jogador.getNickname();
+        this.saldo = jogador.getSaldo();
+        this.stefamons = jogador.getStefamons();
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Long getIdJogador() {
+        return idJogador;
+    }
+
+    public void setIdJogador(Long idJogador) {
+        this.idJogador = idJogador;
     }
 
     public String getNickname() {
