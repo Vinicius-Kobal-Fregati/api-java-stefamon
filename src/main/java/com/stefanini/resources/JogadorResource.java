@@ -33,13 +33,13 @@ public class JogadorResource {
         return Response.status(Response.Status.CREATED).build();
     }
 
-    @POST
+    @PUT
     public Response alterar(@Valid Jogador jogador) {
         jogadorService.alterar(jogador);
         return Response.status(Response.Status.NO_CONTENT).build();
     }
 
-    @POST
+    @DELETE
     @Path("/{id}")
     public Response deletar(@PathParam("id") Long id) {
         jogadorService.deletar(id);
