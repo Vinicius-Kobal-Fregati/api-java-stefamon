@@ -20,17 +20,17 @@ import java.util.stream.Collectors;
 public class JogadorService {
 
     @Inject
-    JogadorRepository jogadorRepository;
+    JogadorRepository repository;
 
     @Transactional
     public void salvar(Jogador jogador) {
         jogador.setPassword(EncriptadorSenhaUtil
                 .encripta(jogador.getPassword()));
-        jogadorRepository.salvar(jogador);
+        repository.salvar(jogador);
     }
 
     public JogadorVisualizacaoDTO pegarPorId(Long id) {
-        var jogador = jogadorRepository.pegarPorId(id);
+        var jogador = repository.pegarPorId(id);
         if(Objects.isNull(jogador)) {
             throw new RegraDeNegocioException("Ocorreu um erro ao buscar o Jogador de id " + id, Response.Status.NOT_FOUND);
         }
@@ -41,22 +41,22 @@ public class JogadorService {
     public void alterar(Jogador jogador) {
         jogador.setPassword(EncriptadorSenhaUtil
                 .encripta(jogador.getPassword()));
-        jogadorRepository.alterar(jogador);
+        repository.alterar(jogador);
     }
 
     @Transactional
     public void deletar(Long id) {
-        jogadorRepository.deletar(id);
+        repository.deletar(id);
     }
 
     public List<JogadorVisualizacaoDTO> listarTodos() {
-        return jogadorRepository.listarTodos().stream()
+        return repository.listarTodos().stream()
                 .map(JogadorParser::entidadeParaVisualizacaoDTO)
                 .collect(Collectors.toList());
     }
 
     public void loginDoJogador(JogadorCadastroDTO jogador) {
-        Jogador jogadorEncontrado = jogadorRepository
+        Jogador jogadorEncontrado = repository
                 .loginDoJogador(jogador.getNickname(), jogador.getPassword())
                 .getSingleResult();
 

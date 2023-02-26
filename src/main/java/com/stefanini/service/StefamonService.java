@@ -17,11 +17,11 @@ public class StefamonService {
     StefamonRepository repository;
 
     public List<Stefamon> listarTodos(){
-        return repository.listAll();
+        return repository.listarTodos();
     }
 
     public Stefamon pegarPorId(Long id) {
-        var stefamon =  repository.findById(id);
+        var stefamon =  repository.pegarPorId(id);
         if(Objects.isNull(stefamon)) {
             throw new RegraDeNegocioException("Não encontramos nada com o id " + id, Response.Status.NOT_FOUND);
         }
