@@ -4,14 +4,20 @@ import com.stefanini.entity.Jogador;
 import com.stefanini.exceptions.RegraDeNegocioException;
 import com.stefanini.repository.JogadorRepository;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.Objects;
 
+@ApplicationScoped
 public class JogadorService {
 
+    @Inject
     JogadorRepository jogadorRepository;
 
+    @Transactional
     public void salvar(Jogador jogador) {
         jogadorRepository.save(jogador);
     }
@@ -24,10 +30,12 @@ public class JogadorService {
         return jogador;
     }
 
+    @Transactional
     public void alterar(Jogador jogador) {
         jogadorRepository.update(jogador);
     }
 
+    @Transactional
     public void deletar(Long id) {
         jogadorRepository.delete(id);
     }
