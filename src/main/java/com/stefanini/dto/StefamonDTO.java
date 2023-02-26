@@ -2,10 +2,13 @@ package com.stefanini.dto;
 
 import com.stefanini.entity.Stefamon;
 
+import java.math.BigDecimal;
+
 public class StefamonDTO {
 
     private Long id;
     private String nome;
+    private BigDecimal preco;
     private Integer vida;
     private Integer ataque;
     private Integer defesa;
@@ -13,6 +16,23 @@ public class StefamonDTO {
     private Integer poder;
     private Integer velocidade;
     private String urlFoto;
+
+    public StefamonDTO(Stefamon stefamon) {
+        this.id = stefamon.getId();
+        this.nome = stefamon.getNome();
+        this.vida = stefamon.getVida();
+        this.ataque = stefamon.getAtaque();
+        this.defesa = stefamon.getDefesa();
+        this.inteligencia = stefamon.getInteligencia();
+        this.poder = stefamon.getPoder();
+        this.velocidade = stefamon.getVelocidade();
+        this.urlFoto = stefamon.getUrlFoto();
+        this.preco = BigDecimal.valueOf((vida + ataque + defesa + inteligencia + poder + velocidade)/6);
+    }
+
+    public StefamonDTO() {
+
+    }
 
     public Long getId() {
         return id;
@@ -84,5 +104,13 @@ public class StefamonDTO {
 
     public void setUrlFoto(String urlFoto) {
         this.urlFoto = urlFoto;
+    }
+
+    public BigDecimal getPreco() {
+        return preco;
+    }
+
+    public void setPreco(BigDecimal preco) {
+        this.preco = preco;
     }
 }

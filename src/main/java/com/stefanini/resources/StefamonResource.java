@@ -17,7 +17,8 @@ public class StefamonResource {
     @GET
     @Path("/todos")
     public Response listarTodos() {
-        return Response.status(Response.Status.OK).entity(service.listarTodos()).build();
+        return Response.status(Response.Status.OK)
+                .entity(service.listarTodos()).build();
     }
 
     @GET
