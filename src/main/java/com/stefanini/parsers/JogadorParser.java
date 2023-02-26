@@ -1,8 +1,8 @@
-package com.stefanini.parser;
+package com.stefanini.parsers;
 
 import com.stefanini.dto.JogadorCadastroDTO;
 import com.stefanini.dto.JogadorVisualizacaoDTO;
-import com.stefanini.entity.Jogador;
+import com.stefanini.entities.Jogador;
 
 public abstract class JogadorParser {
 

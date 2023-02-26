@@ -1,17 +1,16 @@
-package com.stefanini.service;
+package com.stefanini.services;
 
 import com.stefanini.dto.StefamonDTO;
-import com.stefanini.entity.Stefamon;
+import com.stefanini.entities.Stefamon;
 import com.stefanini.exceptions.RegraDeNegocioException;
-import com.stefanini.parser.StefamonParser;
-import com.stefanini.repository.StefamonRepository;
+import com.stefanini.parsers.StefamonParser;
+import com.stefanini.repositories.StefamonRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @ApplicationScoped

@@ -1,7 +1,7 @@
 package com.stefanini.dto;
 
-import com.stefanini.entity.Jogador;
-import com.stefanini.entity.Stefamon;
+import com.stefanini.entities.Jogador;
+import com.stefanini.entities.Stefamon;
 
 import java.math.BigDecimal;
 import java.util.List;

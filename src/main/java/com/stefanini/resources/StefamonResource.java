@@ -1,6 +1,6 @@
 package com.stefanini.resources;
 
-import com.stefanini.service.StefamonService;
+import com.stefanini.services.StefamonService;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;

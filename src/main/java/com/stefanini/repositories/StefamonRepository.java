@@ -1,8 +1,8 @@
-package com.stefanini.repository;
+package com.stefanini.repositories;
 
 
 import com.stefanini.dao.GenericDAO;
-import com.stefanini.entity.Stefamon;
+import com.stefanini.entities.Stefamon;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.util.List;

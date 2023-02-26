@@ -1,4 +1,4 @@
-package com.stefanini.entity;
+package com.stefanini.entities;
 
 import com.stefanini.dto.JogadorCadastroDTO;
 import com.stefanini.dto.JogadorVisualizacaoDTO;
@@ -32,7 +32,7 @@ public class Jogador {
     private String password;
 
     @Column
-    private BigDecimal saldo = BigDecimal.valueOf(5000.00);
+    private BigDecimal saldo = BigDecimal.valueOf(300.00);
 
 
     @ManyToMany

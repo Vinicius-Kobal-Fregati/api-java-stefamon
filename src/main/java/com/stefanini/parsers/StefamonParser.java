@@ -1,7 +1,7 @@
-package com.stefanini.parser;
+package com.stefanini.parsers;
 
 import com.stefanini.dto.StefamonDTO;
-import com.stefanini.entity.Stefamon;
+import com.stefanini.entities.Stefamon;
 
 public class StefamonParser {
 

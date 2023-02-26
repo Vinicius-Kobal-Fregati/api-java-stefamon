@@ -1,7 +1,7 @@
-package com.stefanini.repository;
+package com.stefanini.repositories;
 
 import com.stefanini.dao.GenericDAO;
-import com.stefanini.entity.Jogador;
+import com.stefanini.entities.Jogador;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.TypedQuery;

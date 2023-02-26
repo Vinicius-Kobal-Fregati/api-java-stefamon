@@ -2,8 +2,8 @@ package com.stefanini.resources;
 
 import com.stefanini.dto.CompraStefamonDTO;
 import com.stefanini.dto.JogadorCadastroDTO;
-import com.stefanini.entity.Jogador;
-import com.stefanini.service.JogadorService;
+import com.stefanini.entities.Jogador;
+import com.stefanini.services.JogadorService;
 
 import javax.inject.Inject;
 import javax.validation.Valid;

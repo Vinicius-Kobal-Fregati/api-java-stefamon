@@ -1,6 +1,6 @@
 package com.stefanini.dto;
 
-import com.stefanini.entity.Stefamon;
+import com.stefanini.entities.Stefamon;
 
 import java.math.BigDecimal;
 
