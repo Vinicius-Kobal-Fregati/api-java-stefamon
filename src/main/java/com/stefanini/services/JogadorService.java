@@ -72,7 +72,7 @@ public class JogadorService {
                 .collect(Collectors.toList());
     }
 
-    public void loginDoJogador(JogadorCadastroDTO jogador) {
+    public JogadorVisualizacaoDTO loginDoJogador(JogadorCadastroDTO jogador) {
         Jogador jogadorEncontrado = repository
                 .loginDoJogador(jogador.getNickname(), jogador.getPassword())
                 .getSingleResult();
@@ -81,6 +81,7 @@ public class JogadorService {
             throw new RegraDeNegocioException("Nenhum jogador encontrado com esse usuário e senha",
                     Response.Status.NOT_FOUND);
         }
+        return JogadorParser.entidadeParaVisualizacaoDTO(jogadorEncontrado);
     }
 
     public void compraStefamon(CompraStefamonDTO compra) {

@@ -50,8 +50,7 @@ public class JogadorResource {
     @POST
     @Path("/login")
     public Response loginDoJogador(@Valid JogadorCadastroDTO jogador) {
-        jogadorService.loginDoJogador(jogador);
-        return Response.status(Response.Status.NO_CONTENT).build();
+        return Response.status(Response.Status.OK).entity(jogadorService.loginDoJogador(jogador)).build();
     }
 
     @PUT
